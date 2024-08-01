@@ -7,7 +7,9 @@
     >
   </header>
   <main>
-    <router-view></router-view>
+    <div class="container">
+      <router-view></router-view>
+    </div>
   </main>
 </template>
 
@@ -47,5 +49,11 @@ header {
       color: #34d999;
     }
   }
+}
+
+.container {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

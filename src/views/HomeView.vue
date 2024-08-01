@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+import { useMovieStore } from "../stores/movie";
+const movieStore = useMovieStore();
+</script>
 <template>
   <div class="home">
     <div class="featured-movie-card">
@@ -19,26 +22,24 @@
       </router-link>
     </div>
 
-    <form action="" class="search-box">
+    <form @submit.prevent="movieStore.searchMovies" class="search-box">
       <div class="">
-        <input type="text" placeholder="Search the movie" />
+        <input type="text" v-model="movieStore.search" placeholder="Search the movie" />
         <input type="submit" value="Search" />
       </div>
     </form>
+
     <div class="movies-list">
-      <div class="movie">
+      <div class="movie" v-for="movie in movieStore.movies" :key="movie.imdbID">
         <router-link to="/movie/tt0120338" class="movie-link">
           <div class="movie-image">
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg"
-              alt=""
-            />
-            <div class="movie-type">Action,Drama</div>
+            <img :src="movie.Poster" alt="" />
+            <div class="movie-type">{{ movie.Type }}</div>
           </div>
 
           <div class="movie-detail">
-            <p class="movie-year">1997</p>
-            <h3>Titanic</h3>
+            <p class="movie-year">{{ movie.Year }}</p>
+            <h3>{{ movie.Title }}</h3>
           </div>
         </router-link>
       </div>
