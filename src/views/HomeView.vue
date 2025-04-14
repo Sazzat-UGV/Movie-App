@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+import { useMovieStore } from './stores/movie'
+const movieStore = useMovieStore()
+</script>
 
 <template>
   <div class="home">
