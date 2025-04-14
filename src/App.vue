@@ -1,6 +1,4 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
   <header>
@@ -9,7 +7,9 @@
     </router-link>
   </header>
   <main>
-    <router-view> </router-view>
+    <div class="container">
+      <router-view> </router-view>
+    </div>
   </main>
 </template>
 
@@ -41,10 +41,14 @@ header {
   h1 {
     color: #fff;
     font-size: 26px;
-  
-    span{
+
+    span {
       color: #34d399;
     }
   }
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
 }
 </style>

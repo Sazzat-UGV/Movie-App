@@ -1,6 +1,6 @@
 <script setup>
-import { useMovieStore } from './stores/movie'
-const movieStore = useMovieStore()
+import { useMovieStore } from "../stores/movie.js";
+const movieStore = useMovieStore();
 </script>
 
 <template>
@@ -8,39 +8,39 @@ const movieStore = useMovieStore()
     <div class="featured-movie-card">
       <router-link to="/movie/tt0278731">
         <img
-          src="https://m.media-amazon.com/images/M/MV5BOTllODI2MWUtMDM2Mi00OTVkLTgyZWItOGFlZGQyZTRmZjhjXkEyXkFqcGc@._V1_SX300.jpg"
+          src="https://m.media-amazon.com/images/M/MV5BYzYyN2FiZmUtYWYzMy00MzViLWJkZTMtOGY1ZjgzNWMwN2YxXkEyXkFqcGc@._V1_SX300.jpg"
           alt="movie-image"
           class="featured-movie-img"
         />
         <div class="movie-detail">
-          <h3>Super Man</h3>
+          <h3>Titanic</h3>
           <p>
-            A mentally disturbed man takes residence in a halfway house. His
-            mind gradually slips back into the realm created by his illness,
-            where he replays a key part of his childhood
+            A seventeen-year-old aristocrat falls in love with a kind but poor
+            artist aboard the luxurious, ill-fated R.M.S. Titanic.
           </p>
         </div>
       </router-link>
     </div>
-    <form action="" class="search-box">
+    <form @submit.prevent="movieStore.searchMovies" class="search-box">
       <div class="">
-        <input type="text" placeholder="Search the movie" />
+        <input
+          type="text"
+          placeholder="Search the movie"
+          v-model="movieStore.search"
+        />
         <input type="submit" value="Search" />
       </div>
     </form>
     <div class="movies-list">
-      <div class="movie">
+      <div class="movie" v-for="movie in movieStore.movies" :key="movie.imdbID">
         <router-link to="/movie/tt0278731" class="movie-link">
           <div class="movie-image">
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BOTllODI2MWUtMDM2Mi00OTVkLTgyZWItOGFlZGQyZTRmZjhjXkEyXkFqcGc@._V1_SX300.jpg"
-              alt=""
-            />
-            <div class="movie-type">Action,Drama</div>
+            <img :src="movie.Poster" alt="" />
+            <div class="movie-type">{{ movie.Type }}</div>
           </div>
           <div class="movie-detail">
-            <p class="movie-year">1935</p>
-            <h3>Superman</h3>
+            <p class="movie-year">{{ movie.Year }}</p>
+            <h3>{{ movie.Title }}</h3>
           </div>
         </router-link>
       </div>
