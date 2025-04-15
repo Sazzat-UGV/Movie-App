@@ -33,7 +33,7 @@ const movieStore = useMovieStore();
     </form>
     <div class="movies-list">
       <div class="movie" v-for="movie in movieStore.movies" :key="movie.imdbID">
-        <router-link to="/movie/tt0278731" class="movie-link">
+        <router-link :to="{name: 'movie-detail', params:{id: movie.imdbID}}" class="movie-link">
           <div class="movie-image">
             <img :src="movie.Poster" alt="" />
             <div class="movie-type">{{ movie.Type }}</div>
