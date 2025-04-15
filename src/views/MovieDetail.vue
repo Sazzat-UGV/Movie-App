@@ -9,11 +9,11 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div class="movie-detail">
-    <!-- <h3>{{ movieStore.singleMovie.Title }}</h3> -->
-     <!-- <p class="movie-year">{{ movieStore.singleMovie.Year }}</p> -->
-    <!-- <img :src="movieStore.singleMovie.Poster" alt="" class="movie-image" /> -->
-    <!-- <p>{{ movieStore.singleMovie.Plot }}</p > -->
+  <div class="movie-detail" v-if="movieStore.singleMovie">
+    <h3>{{ movieStore.singleMovie.Title }}</h3>
+    <p class="movie-year">{{ movieStore.singleMovie.Year }}</p>
+    <img :src="movieStore.singleMovie.Poster" alt="" class="movie-image" />
+    <p>{{ movieStore.singleMovie.Plot }}</p>
   </div>
 </template>
 <style lang="scss">
